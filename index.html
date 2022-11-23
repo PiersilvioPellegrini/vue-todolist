@@ -22,26 +22,32 @@
 <body>
     <div class="container" id="app">˙
 
-
+        <!-- Titolo -->
         <h1 class="text-primary text-center">To Do list</h1>
+        <!-- form in cui gli cambio l'evento submit e inserisco la funzione -->
         <form @submit.prevent="addTask()">
-        <div class="row">
-            <div class="col-12">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Add a new task" v-model="newTaskData.text">
-                    <button class="btn btn-primary" type="button" id="button-addon2" @click="addTask()">Aggiungi</button>
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <!-- input in cui inserisco il testo del task -->
+
+                        <input type="text" class="form-control" placeholder="Add a new task" v-model="newTaskData.text">
+                        <button class="btn btn-primary" type="button" @click="addTask()">Aggiungi</button>
+                    </div>
                 </div>
             </div>
-        </div>
         </form>
         <div class="col-12 text-center py-2">
 
-            <div v-for="(task,i) in taskList" class="row py-2">
-                <div class="col-8">
-                    <p :class="{'text-decoration-line-through': task.completed}">{{task.text}}</p>
+            <div v-for="(task,i) in taskList" class="d-flex py-2 justify-content-evenly">
+                <label class="form-check form-switch">
+                    <input type="checkbox" v-model="task.completed" class="form-check-input " role="switch" >
+
+                    <p :class="{'text-decoration-line-through text-danger': task.completed}">{{task.text}}</p>
                     
-                </div>
-                <div class="col-3">
+                </label>
+             
+                <div>
                     <button class="btn btn-danger" @click="deleteItem(i)">Remove</button>
                 </div>
             </div>
