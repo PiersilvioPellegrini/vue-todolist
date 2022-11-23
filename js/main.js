@@ -3,6 +3,7 @@ const { createApp } = Vue;
  const app = createApp({
   data() {
     return {
+      // array elementi task
       taskList: [
         {
           text: "task1",
@@ -25,13 +26,14 @@ const { createApp } = Vue;
        
     },
      methods: {
+        // funzione per aggiungere nuovo task alla lista
               addTask() {
                 this.taskList.push({
                   text: this.newTaskData.text,
                   completed: false,
                 });
               },
-    
+              // funzione per eliminare il task
               deleteItem(i) {
                 const confirmed = confirm(
                   "Sei sicuro di voler eliminare l'elemento?"

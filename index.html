@@ -32,6 +32,7 @@
                         <!-- input in cui inserisco il testo del task -->
 
                         <input type="text" class="form-control" placeholder="Add a new task" v-model="newTaskData.text">
+                        <!-- Bottone ADD  -->
                         <button class="btn btn-primary" type="button" @click="addTask()">Aggiungi</button>
                     </div>
                 </div>
@@ -41,13 +42,15 @@
 
             <div v-for="(task,i) in taskList" class="d-flex py-2 justify-content-evenly">
                 <label class="form-check form-switch">
+                    <!-- checkbox -->
                     <input type="checkbox" v-model="task.completed" class="form-check-input " role="switch" >
-
+                    <!-- text -->
                     <p :class="{'text-decoration-line-through text-danger': task.completed}">{{task.text}}</p>
                     
                 </label>
              
                 <div>
+                    <!-- botton delete -->
                     <button class="btn btn-danger" @click="deleteItem(i)">Remove</button>
                 </div>
             </div>
